@@ -60,12 +60,12 @@ ORDER BY name ASC;
 When asking PostgreSQL to insert or delete data, use this pattern:
 
     $stmt = "";
-    pg_query($stmt);
+    pg_query($db, $stmt);
 
 When asking PostgreSQL to return data to display on the webpage, use this pattern:
 
     $stmt = "";
-    $request = pg_query($stmt);
+    $request = pg_query($db, $stmt);
     return pg_fetch_all($request);
 
 
