@@ -15,6 +15,7 @@
 <body>
 
 <?php 
+  include('common.php');
   include('client.php');
   include('activity.php');
   include('category.php');
@@ -23,8 +24,6 @@
 <div class="container">
 
 <h1 class="text-center">Timething</h1>
-
-
 
   <form method="get" action="">
     <div class="form-inline">
@@ -53,12 +52,12 @@
     </div>
   </form>
 
-
 <div class="form-group">
-  <label for="starttime" class="col-form-label">Start Date and time</label>
-  <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="starttime">
-  </div>
+  <label for="starttime" class="sr-only">Start Date and time</label>
+<!--   <div class="input-group">
+    <div class="input-group-addon">+</div> -->
+    <input class="form-control" type="datetime-local" id="starttime">
+  <!-- </div> -->
 </div>
 
 <div class="form-group">
@@ -68,17 +67,14 @@
   </div>
 </div>
 
-
-
 <form>
-  <textarea type="textarea"></textarea>
+  <textarea type="textarea" class="form-control"></textarea>
 </form>
-
-
   
 <footer>
   <nav class="text-center d-inline-block navbar fixed-bottom">
-    <a class="pl-5 pr-5">&copy; 2017 The Oreons</a>
+    <a href="#"><h4>Manage Clients</h4></a>
+    <a class="pl-5 pr-5">&copy;2017&nbsp;The&nbsp;Oreons</a>
     <a class="pl-5 pr-5">About</a>
     <a class="pl-5 pr-5">Contact</a>
   </nav>

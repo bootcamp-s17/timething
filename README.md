@@ -39,3 +39,36 @@ CREATE TABLE activity_category (
     create_date TIMESTAMP DEFAULT now(),
     last_update TIMESTAMP DEFAULT now()
 );
+
+## SQL commands:
+
+SELECT * FROM clients; -- everything in table in database's choice of order
+
+SELECT * FROM clients ORDER BY name; -- everything in table in name order, ascending (implicit)
+
+SELECT * FROM clients ORDER BY name ASC; -- everything in table in name order, ascending (explicit)
+
+SELECT * FROM clients ORDER BY name DESC; -- everything in table in name order, descending
+
+-- Changing names of columns
+SELECT id AS client_id, name AS client_name, CREATE_date AS date_client_created, last_update AS last_time_client_updated
+FROM clients
+ORDER BY name ASC;
+
+## Remember!
+
+When asking PostgreSQL to insert or delete data, use this pattern:
+
+    $stmt = "";
+    pg_query($stmt);
+
+When asking PostgreSQL to return data to display on the webpage, use this pattern:
+
+    $stmt = "";
+    $request = pg_query($stmt);
+    return pg_fetch_all($request);
+
+
+
+
+

@@ -8,3 +8,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Courgette', cursive !important;
 }
 
+nav {
+  background-color: #cccccc;
+}
+
+a:hover {
+  text-decoration: none; 
+}
+
+.container {
+  max-width: 400px;
+}
