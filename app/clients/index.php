@@ -19,7 +19,7 @@
   include('../common.php');
   include('../client.php');
   //include('activity.php');
-  //include('category.php');
+  include('../category.php');
 ?>
 
 <div class="container">
@@ -62,7 +62,17 @@
 </form>
 
 <?php
+
+    $categories = getCategories($client['id']);
+
+    global $active_client;
+    if ($active_client == $client['id']) {
+      include('../components/category_list.php');
+    }
+
+
   }
+
 ?>
   
 <footer>

@@ -21,7 +21,8 @@
         }
         break;
       case 'edit_categories':
-        // ???
+        global $active_client;
+        $active_client = $safeId;
         break;
       case 'delete':
         deleteClient($safeId);
