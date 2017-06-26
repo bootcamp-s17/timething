@@ -29,16 +29,18 @@
 <h1 class="text-center">Manage Clients</h1>
 
 <?php 
-  if ($status_message) {
+  if ($status_message['text']) {
 ?>
 
-<div class="alert alert-info" role="alert">
-  <strong>Heads up!</strong> <?=$status_message;?>
+<div class="alert <?php echo $status_message['style']; ?>" role="alert">
+  <strong>Heads up!</strong> <?=$status_message['text'];?>
 </div>
 
 <?php 
   }
 ?>
+
+<?php include('../components/new_client_form.php'); ?>
 
 <?php 
   foreach (getClients() as $client) {
@@ -62,11 +64,6 @@
 <?php
   }
 ?>
-
-
-
-
-
   
 <footer>
   <nav class="text-center d-inline-block navbar fixed-bottom">
