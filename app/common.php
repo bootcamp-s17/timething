@@ -1,4 +1,5 @@
 <?php
+  $ENV = parse_ini_file('env.ini');
 
   $status_message = array(
     'text' => '',
@@ -8,7 +9,8 @@
   $active_client = 0;
 
   function getDb() {
-    $db = pg_connect("host=localhost port=5432 dbname=timedb_dev user=timeuser password=time");
+    global $ENV;
+    $db = pg_connect("host=$ENV[HOST] port=$ENV[PORT] dbname=$ENV[DB_NAME] user=$ENV[USERNAME] password=$ENV[PWD]");
     return $db;
   }
 
