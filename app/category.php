@@ -1,5 +1,6 @@
 <?php
 
+// var_dump($_GET);
 
    if (isset($_GET['submit'])) {
 
@@ -21,9 +22,9 @@
     }
 
     switch ($safeSubmit) {
-      // case 'save':
+      case 'save_category':
       //   if (strlen($safeNewName) > 0) {
-      //     saveClient($safeId, $safeNewName);
+          saveCategory($safeCategoryId, $safeNewName, $safeNewRate);
       //   }
       //   else {
       //     global $status_message;
@@ -33,11 +34,8 @@
       //   break;
       // case 'edit_categories':
         
-
-
-
         
-      //   break;
+        break;
       case 'delete_category':
         deleteCategory($safeCategoryId);
         break;
@@ -56,18 +54,6 @@
     }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
  function getCategories($id) {
     $stmt = "SELECT * FROM categories WHERE client_id=$id ORDER BY name ASC";
@@ -89,6 +75,11 @@
     $status_message['text'] = "Category deleted!";
   }
 
-
+  function saveCategory($category_id, $new_name, $new_rate) {
+    global $status_message;
+    $stmt = "UPDATE categories SET name='$new_name', rate=$new_rate, last_update=now() WHERE id=$category_id";
+    pg_query(getDb(), $stmt);
+    $status_message['text'] = 'Category updated!';
+  }
 
 ?>

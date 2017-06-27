@@ -19,7 +19,7 @@ foreach ($categories as $category) { ?>
     <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientName" name="name" value="<?=$category['name'];?>">
 
     <label class="sr-only" for="clientRate">Rate</label>
-    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientRate" name="name" value="<?=$category['rate'];?>">
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientRate" name="rate" value="<?=$category['rate'];?>">
 
     <button type="submit" class="btn btn-primary mr-2" name="submit" value="save_category"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
