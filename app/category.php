@@ -15,6 +15,10 @@
     if (isset($_GET['rate'])) {
       $safeNewRate = htmlentities($_GET['rate']);
     }
+    $safeCategoryId = 0;
+    if (isset($_GET['category_id'])) {
+      $safeCategoryId = intval(htmlentities($_GET['category_id']));
+    }
 
     switch ($safeSubmit) {
       // case 'save':
@@ -34,9 +38,9 @@
 
         
       //   break;
-      // case 'delete':
-      //   deleteClient($safeId);
-      //   break;
+      case 'delete_category':
+        deleteCategory($safeCategoryId);
+        break;
       case 'add_category':
         // if (strlen($safeNewName) > 0) {
 
@@ -73,6 +77,11 @@
 
   function addCategory($client_id, $name, $rate) {
     $stmt = "INSERT INTO categories (client_id, name, rate) VALUES ($client_id, '$name', $rate)";
+    pg_query(getDb(), $stmt);
+  }
+
+  function deleteCategory($category_id) {
+    $stmt = 'DELETE FROM categories WHERE id=' . $category_id;
     pg_query(getDb(), $stmt);
   }
 

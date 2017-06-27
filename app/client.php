@@ -55,8 +55,14 @@
   };
 
   function deleteClient($id) {
+
+var_dump($id);
+
     global $status_message;
     $stmt = 'DELETE FROM clients WHERE id=' . $id;
+
+var_dump($stmt);
+
     pg_query(getDb(), $stmt);
     $status_message['text'] = "Client deleted!";
   };
