@@ -4,9 +4,9 @@
    if (isset($_GET['submit'])) {
 
     $safeSubmit = htmlentities($_GET['submit']);
-    $safeId = '';
-    if (isset($_GET['id'])) {
-      $safeId = htmlentities($_GET['id']);
+    $safeClientId = 0;
+    if (isset($_GET['client_id'])) {
+      $safeClientId = intval(htmlentities($_GET['client_id']));
     }
     $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
     $safeNewRate = '';
@@ -37,7 +37,9 @@
       //   break;
       case 'add_category':
         // if (strlen($safeNewName) > 0) {
-          addCategory($active_client, $safeNewName, $safeNewRate);
+
+
+          addCategory($safeClientId, $safeNewName, $safeNewRate);
         // }
         // else {
         //   global $status_message;
@@ -70,11 +72,6 @@
   function addCategory($client_id, $name, $rate) {
     $stmt = "INSERT INTO categories (client_id, name, rate) VALUES ($client_id, '$name', $rate)";
     pg_query(getDb(), $stmt);
-
-
-
-
-
   }
 
 

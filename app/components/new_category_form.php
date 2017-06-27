@@ -1,3 +1,5 @@
+<!-- Start of new_category_form.php -->
+
 <form method="get" class="form-inline pb-3">
 
 <?php global $active_client; ?>
@@ -13,3 +15,6 @@
   <button type="submit" class="btn btn-outline-primary mr-2" name="submit" value="add_category"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
 </form>
+
+<!-- End of new_category_form.php -->
+
