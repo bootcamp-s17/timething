@@ -58,7 +58,11 @@
  function getCategories($id) {
     $stmt = "SELECT * FROM categories WHERE client_id=$id ORDER BY name ASC";
     $request = pg_query(getDb(), $stmt);
-    return pg_fetch_all($request);
+    $results = pg_fetch_all($request);
+    if ($results) {
+      return $results;
+    }
+    return array();
   };  
 
   function addCategory($client_id, $name, $rate) {

@@ -44,7 +44,11 @@
   function getClients() {
     $stmt = 'SELECT * FROM clients ORDER BY name ASC';
     $request = pg_query(getDb(), $stmt);
-    return pg_fetch_all($request);
+    $results = pg_fetch_all($request);
+    if ($results) {
+      return $results;
+    }
+    return array();
   };
 
   function saveClient($id, $new_name) {
