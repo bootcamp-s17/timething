@@ -76,13 +76,17 @@
   };  
 
   function addCategory($client_id, $name, $rate) {
+    global $status_message;
     $stmt = "INSERT INTO categories (client_id, name, rate) VALUES ($client_id, '$name', $rate)";
     pg_query(getDb(), $stmt);
+    $status_message['text'] = "Category added!";
   }
 
   function deleteCategory($category_id) {
+    global $status_message;
     $stmt = 'DELETE FROM categories WHERE id=' . $category_id;
     pg_query(getDb(), $stmt);
+    $status_message['text'] = "Category deleted!";
   }
 
 
