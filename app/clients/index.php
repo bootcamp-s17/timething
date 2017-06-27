@@ -70,7 +70,6 @@
       include('../components/category_list.php');
     }
 
-
   }
 
 ?>

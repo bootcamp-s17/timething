@@ -7,6 +7,8 @@
     $safeClientId = 0;
     if (isset($_GET['client_id'])) {
       $safeClientId = intval(htmlentities($_GET['client_id']));
+      global $active_client;
+      $active_client = $safeClientId;
     }
     $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
     $safeNewRate = '';
