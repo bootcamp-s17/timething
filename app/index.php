@@ -10,7 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="rainbow_heart.png">
+  <link rel="icon" type="image/jpeg" href="stopwatch.jpeg">
+  <script src="main.js"></script>
 </head>
 <body>
 
@@ -25,15 +26,44 @@
 
 <h1 class="text-center mt-0 mb-5">Timething</h1>
 
+
+
+
+<label for="continent">Select Continent</label>
+<select id="continent" onchange="countryChange(this);">
+<option value="empty">Select a Continent</option>
+<option value="North America">North America</option>
+<option value="South America">South America</option>
+<option value="Asia">Asia</option>
+<option value="Europe">Europe</option>
+</select>
+<br />
+<label for="country">Select a country</label>
+<select id="country">
+<option value="0">Select a country</option>
+</select>
+
+
+
+
+
+<div style="padding-bottom: 100px;"></div>
+
+
+
+
+
 <form method="get" action="">
 
   <div class="form-group pb-2">
     <label for="clientSelect" class="sr-only">Select a Client</label>
     <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId">
       <?php 
-      foreach (getClients() as $client) {
-        print '<option value="' . $client['id'] . '">' . $client['name'] . "</option>\n";
-      }
+        foreach (getClients() as $client) {
+          if ($client['count'] > 0) {
+            print '<option value="' . $client['id'] . '">' . $client['name'] . "</option>\n";       
+          }
+        }
       ?>
     </select>
   </div>
@@ -73,11 +103,6 @@
   <button type="submit" class="mt-2 btn btn-primary" name="submit" value="add_activity">Add Activity</button>
 
   </form>
-
-
-
-
-
   
 <footer>
   <nav class="text-center d-inline-block navbar fixed-bottom">
