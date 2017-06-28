@@ -9,7 +9,7 @@ h1 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Courgette', cursive !important;
+  font-family: 'Courgette', cursive;
 }
 
 nav {
@@ -22,4 +22,9 @@ a:hover {
 
 .container {
   max-width: 620px;
+}
+
+.home-link {
+  font-family: 'Courgette', cursive;
+  font-size: 24px;
 }

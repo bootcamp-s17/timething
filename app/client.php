@@ -10,6 +10,10 @@
     $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
 
     switch ($safeSubmit) {
+      // case 'invoice':
+      //   header("Location: http://localhost:8000/clients/invoices/index.php?id=" . $safeId);
+      //   exit();
+      //   break;
       case 'save':
         if (strlen($safeNewName) > 0) {
           saveClient($safeId, $safeNewName);

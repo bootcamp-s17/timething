@@ -24,9 +24,9 @@
 
 <div class="container">
 
-<p><a href="/">Home</a></p>
+<p class="home-link mt-2"><a href="/">Home</a></p>
 
-<h1 class="text-center">Manage Clients</h1>
+<h1 class="text-center mb-5">Manage Clients</h1>
 
 <?php 
   if ($status_message['text']) {
@@ -56,6 +56,8 @@
   <button type="submit" class="btn btn-primary mr-2" name="submit" value="save"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
   <button type="submit" class="btn btn-success mr-2" name="submit" value="edit_categories"><i class="fa fa-list" aria-hidden="true"></i></button>
+
+  <a class="btn btn-warning mr-2" href="/clients/invoices/index.php?id=<?=$client['id'];?>"><i class="fa fa-usd" aria-hidden="true"></i></a>
 
   <button type="submit" class="btn btn-danger" name="submit" value="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
