@@ -23,53 +23,61 @@
 
 <div class="container">
 
-<h1 class="text-center">Timething</h1>
+<h1 class="text-center mt-0 mb-5">Timething</h1>
 
-  <form method="get" action="">
-    <div class="form-inline">
-      <label for="clientSelect" class="sr-only">Select a Client</label>
-      <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId">
-<?php 
-  foreach (getClients() as $client) {
-    print '<option value="' . $client['id'] . '">' . $client['name'] . "</option>\n";
-  }
-?>
-      </select>
-    </div>
-  </form>
+<form method="get" action="">
 
-
-  <form method="get" action="">
-    <div class="form-inline">
-      <label for="categorySelect" class="sr-only">Select a Category</label>
-      <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="categorySelect" name="categoryId">
-<?php 
-  foreach (getCategories(42) as $category) {
-    print '<option value="' . $category['id'] . '">' . $category['name'] . "</option>\n";
-  }
-?>
-      </select>
-    </div>
-  </form>
-
-<div class="form-group">
-  <label for="starttime" class="sr-only">Start Date and time</label>
-<!--   <div class="input-group">
-    <div class="input-group-addon">+</div> -->
-    <input class="form-control" type="datetime-local" id="starttime">
-  <!-- </div> -->
-</div>
-
-<div class="form-group">
-  <label for="endtime" class="col-form-label">End Date and time</label>
-  <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="endtime">
+  <div class="form-group pb-2">
+    <label for="clientSelect" class="sr-only">Select a Client</label>
+    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId">
+      <?php 
+      foreach (getClients() as $client) {
+        print '<option value="' . $client['id'] . '">' . $client['name'] . "</option>\n";
+      }
+      ?>
+    </select>
   </div>
-</div>
 
-<form>
-  <textarea type="textarea" class="form-control"></textarea>
-</form>
+  <div class="form-group pb-1">
+    <label for="categorySelect" class="sr-only">Select a Category</label>
+    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="categorySelect" name="categoryId">
+      <?php 
+        foreach (getCategories(42) as $category) {
+          print '<option value="' . $category['id'] . '">' . $category['name'] . "</option>\n";
+        }
+      ?>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="starttime" class="col-form-label">Start Date and Time</label>
+    <div class="col-10">
+      <input class="form-control" type="datetime-local" value="" id="starttime">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="endtime" class="col-form-label">End Date and Time</label>
+    <div class="col-10">
+      <input class="form-control" type="datetime-local" value="" id="endtime">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comments" class="col-form-label">Comments</label>
+    <div class="col-10">
+      <textarea name="comments" type="textarea" class="form-control mb-3"></textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="mt-2 btn btn-primary" name="submit" value="add_activity">Add Activity</button>
+
+  </form>
+
+
+
+
+
   
 <footer>
   <nav class="text-center d-inline-block navbar fixed-bottom">
