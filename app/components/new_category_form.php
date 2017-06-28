@@ -12,7 +12,7 @@
   <label class="sr-only" for="categoryRate">Rate</label>
   <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="categoryRate" name="rate" value="<?=$safeNewRate;?>" placeholder="75">
 
-  <button type="submit" class="btn btn-outline-primary mr-2" name="submit" value="add_category"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  <button type="submit" class="btn btn-primary mr-2" name="submit" value="add_category"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
 </form>
 

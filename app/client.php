@@ -49,7 +49,12 @@
   }
 
   function getClients() {
-    $stmt = 'SELECT * FROM clients ORDER BY name ASC';
+    // $stmt = 'SELECT * FROM clients ORDER BY name ASC';
+
+    $stmt = 'SELECT *, (SELECT COUNT(*) FROM categories WHERE categories.client_id = clients.id)
+FROM clients
+ORDER BY name asc';
+
     $request = pg_query(getDb(), $stmt);
     $results = pg_fetch_all($request);
     if ($results) {

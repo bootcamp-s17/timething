@@ -44,6 +44,18 @@
 
 <?php 
   foreach (getClients() as $client) {
+
+    // When there are categories, btn-outline-danger disabled
+    // No categories, btn-danger
+
+    $client['delete_button_classes'] = 'btn btn-danger';
+    $client['delete_disabled_state'] = '';
+
+    if ($client['count'] > 0) {
+      $client['delete_button_classes'] = 'btn btn-outline-danger';
+      $client['delete_disabled_state'] = 'disabled';
+    }
+
 ?>
 
 <form method="get" class="form-inline pb-3">
@@ -59,7 +71,7 @@
 
   <a class="btn btn-warning mr-2" href="/clients/invoices/index.php?id=<?=$client['id'];?>"><i class="fa fa-usd" aria-hidden="true"></i></a>
 
-  <button type="submit" class="btn btn-danger" name="submit" value="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+  <button type="submit" class="<?=$client['delete_button_classes'];?>" name="submit" value="delete" <?=$client['delete_disabled_state'];?>><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
 </form>
 
