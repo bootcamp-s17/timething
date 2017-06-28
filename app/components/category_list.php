@@ -16,7 +16,7 @@ foreach ($categories as $category) { ?>
     <input type="hidden" name="category_id" value="<?=$category['id'];?>">
 
     <label class="sr-only" for="clientName">Name</label>
-    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientName" name="name" value="<?=$category['name'];?>">
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientName" name="category_name" value="<?=$category['name'];?>">
 
     <label class="sr-only" for="clientRate">Rate</label>
     <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clientRate" name="rate" value="<?=$category['rate'];?>">

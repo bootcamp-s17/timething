@@ -11,7 +11,10 @@
       global $active_client;
       $active_client = $safeClientId;
     }
-    $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
+    $safeNewCategoryName = '';
+    if (isset($_GET['category_name'])) {
+      $safeNewCategoryName = htmlentities($_GET['category_name'], ENT_QUOTES);
+    }
     $safeNewRate = '';
     if (isset($_GET['rate'])) {
       $safeNewRate = htmlentities($_GET['rate']);
@@ -23,33 +26,45 @@
 
     switch ($safeSubmit) {
       case 'save_category':
-      //   if (strlen($safeNewName) > 0) {
-          saveCategory($safeCategoryId, $safeNewName, $safeNewRate);
-      //   }
-      //   else {
-      //     global $status_message;
-      //     $status_message['text'] = "Name must be at least one character.";
-      //     $status_message['style'] = 'alert-danger';
-      //   }
-      //   break;
-      // case 'edit_categories':
-        
-        
+        global $status_message;
+        if (strlen($safeNewCategoryName) == 0) {
+          $status_message['text'] .= "Name must be at least one character. ";
+          $status_message['style'] = 'alert-danger';
+        }
+        if (strlen($safeNewRate) == 0) {
+          $status_message['text'] .= "Rate must not be blank. ";
+          $status_message['style'] = 'alert-danger';
+        }
+        if (strlen($status_message['text']) == 0) {
+          saveCategory($safeCategoryId, $safeNewCategoryName, $safeNewRate);
+        }
+        $safeNewCategoryName = '';
+        $safeNewRate = '';
+        break;
+      case 'edit_categories':
+        // Don't need to do anything here,
+        // the form is displayed elsewhere.
         break;
       case 'delete_category':
         deleteCategory($safeCategoryId);
+        $safeNewCategoryName = '';
+        $safeNewRate = '';
         break;
       case 'add_category':
-        // if (strlen($safeNewName) > 0) {
-
-
-          addCategory($safeClientId, $safeNewName, $safeNewRate);
-        // }
-        // else {
-        //   global $status_message;
-        //   $status_message['text'] = "Name must be at least one character.";
-        //   $status_message['style'] = 'alert-danger';
-        // }
+        global $status_message;
+        if (strlen($safeNewCategoryName) == 0) {
+          $status_message['text'] .= "Name must be at least one character. ";
+          $status_message['style'] = 'alert-danger';
+        }
+        if (strlen($safeNewRate) == 0) {
+          $status_message['text'] .= "Rate must not be blank. ";
+          $status_message['style'] = 'alert-danger';
+        }
+        if (strlen($status_message['text']) == 0) {
+          addCategory($safeClientId, $safeNewCategoryName, $safeNewRate);
+          $safeNewCategoryName = '';
+          $safeNewRate = '';
+        }
         break;
     }
 

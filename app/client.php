@@ -7,7 +7,10 @@
     if (isset($_GET['id'])) {
       $safeId = htmlentities($_GET['id']);
     }
-    $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
+    $safeNewName = '';
+    if (isset($_GET['name'])) {
+      $safeNewName = htmlentities($_GET['name'], ENT_QUOTES);
+    }
 
     switch ($safeSubmit) {
       // case 'invoice':

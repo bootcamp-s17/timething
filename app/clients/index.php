@@ -26,7 +26,7 @@
 
 <p class="home-link mt-2"><a href="/">Home</a></p>
 
-<h1 class="text-center mb-5">Manage Clients</h1>
+<h1 class="text-center mt-0 mb-5">Manage Clients</h1>
 
 <?php 
   if ($status_message['text']) {
