@@ -37,6 +37,7 @@
         }
         if (strlen($status_message['text']) == 0) {
           saveCategory($safeCategoryId, $safeNewCategoryName, $safeNewRate);
+          rebuildDataFile();
         }
         $safeNewCategoryName = '';
         $safeNewRate = '';
@@ -47,6 +48,7 @@
         break;
       case 'delete_category':
         deleteCategory($safeCategoryId);
+        rebuildDataFile();
         $safeNewCategoryName = '';
         $safeNewRate = '';
         break;
@@ -62,6 +64,7 @@
         }
         if (strlen($status_message['text']) == 0) {
           addCategory($safeClientId, $safeNewCategoryName, $safeNewRate);
+          rebuildDataFile();
           $safeNewCategoryName = '';
           $safeNewRate = '';
         }
@@ -99,6 +102,21 @@
     $stmt = "UPDATE categories SET name='$new_name', rate=$new_rate, last_update=now() WHERE id=$category_id";
     pg_query(getDb(), $stmt);
     $status_message['text'] = 'Category updated!';
+  }
+
+  function rebuildDataFile() {
+
+    $file = $_SERVER['DOCUMENT_ROOT'] . '/' . 'data.txt';
+
+    $stmt = 'SELECT * FROM categories ORDER BY client_id, name';
+    $request = pg_query(getDb(), $stmt);
+    $results = pg_fetch_all($request);
+
+    $json = json_encode($results);
+
+
+    file_put_contents($file, $json);
+
   }
 
 ?>
