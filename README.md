@@ -77,7 +77,7 @@ USERNAME="timeperson"
 PASSWORD="password"
 DB_NAME="timedb_dev"
 HOST="localhost"
-PORT=8000
+PORT=5432
 ```
 
 Place in app directory.
