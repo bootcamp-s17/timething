@@ -69,6 +69,15 @@ When asking PostgreSQL to return data to display on the webpage, use this patter
     return pg_fetch_all($request);
 
 
+## ini file
 
+Example
+```
+USERNAME="timeperson"
+PASSWORD="password"
+DB_NAME="timedb_dev"
+HOST="localhost"
+PORT=8000
+```
 
-
+Place in app directory.
