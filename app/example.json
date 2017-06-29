@@ -1,0 +1,55 @@
+// For people only!
+// Computers will hate this file.
+
+[
+  {
+    "32":  
+      [
+        {
+          "id": 33,
+          "name": "Design services",
+          "rate": 45
+        },
+        {
+          "id": 36,
+          "name": "Web design",
+          "rate": 60
+        }
+      ]
+  },
+  {
+    "39": 
+      [
+        {
+          "id": 41,
+          "name": "Test out trampoline",
+          "rate": 10
+        },
+        {
+          "id": 39,
+          "name": "Write code",
+          "rate": 35
+        }
+      ]
+  },
+  {
+    "40":
+      [
+        {
+          "id": 42,
+          "name": "Eat lots of frozen yogurt",
+          "rate": 20
+        }
+      ]
+  },
+  {
+    "30":
+      [
+        {
+          "id": 31,
+          "name": "Consulting services",
+          "rate": 65
+        }
+      ]
+  }
+]

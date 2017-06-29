@@ -106,14 +106,30 @@
 
   function rebuildDataFile() {
 
-    $file = $_SERVER['DOCUMENT_ROOT'] . '/' . 'data.txt';
+    $data = array();
 
-    $stmt = 'SELECT * FROM categories ORDER BY client_id, name';
+    $file = $_SERVER['DOCUMENT_ROOT'] . '/' . 'data.json';
+
+    $stmt = 'SELECT * FROM clients ORDER BY name';
     $request = pg_query(getDb(), $stmt);
-    $results = pg_fetch_all($request);
+    $clients = pg_fetch_all($request);
 
-    $json = json_encode($results);
+    // Now we have a list of all our clients. 
 
+    foreach ($clients as $client) {
+
+      $stmt2 = 'SELECT * FROM categories WHERE client_id=' . $client['id'] . ' ORDER BY name asc';
+      $request2 = pg_query(getDb(), $stmt2);
+      $categories = pg_fetch_all($request2);
+
+
+var_dump($categories);
+
+      $data[$client['id']] = $categories;
+
+    }
+
+    $json = json_encode($data);
 
     file_put_contents($file, $json);
 
