@@ -57,7 +57,7 @@
 
   <div class="form-group pb-2">
     <label for="clientSelect" class="sr-only">Select a Client</label>
-    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId">
+    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId" onchange="clientChange(this);">
       <?php 
         foreach (getClients() as $client) {
           if ($client['count'] > 0) {
