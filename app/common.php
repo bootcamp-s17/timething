@@ -21,9 +21,15 @@
 
     $number_of_seconds = ($end_seconds - $start_seconds);
 
-    $minutes = date('i', $number_of_seconds);
-    return $minutes - ($minutes % 15);
+    $hours = floor($number_of_seconds/3600);
+    $minutes = floor(($number_of_seconds - ($hours*3600))/60);
+    $seconds = $number_of_seconds - $hours*3600 - $minutes*60;
 
+    $rounded_minutes = $minutes;
+
+    // where $rounded_minutes should be .00, .25, .50, or .75
+
+    return($hours . ":" . $minutes . ":" . $seconds);
 
 
   }
