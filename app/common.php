@@ -16,4 +16,16 @@
     return $db;
   }
 
+  // https://stackoverflow.com/questions/2480637/round-minute-down-to-nearest-quarter-hour
+  function roundToQuarterHour($start_seconds, $end_seconds) {
+
+    $number_of_seconds = ($end_seconds - $start_seconds);
+
+    $minutes = date('i', $number_of_seconds);
+    return $minutes - ($minutes % 15);
+
+
+
+  }
+
 ?>

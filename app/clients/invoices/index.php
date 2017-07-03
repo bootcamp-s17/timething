@@ -20,6 +20,14 @@
   include('../../client.php');
   include('../../activity.php');
   include('../../category.php');
+  include('../../invoice.php');
+
+
+  $safeClientId = $active_client;
+  if (isset($_GET['id'])) {
+    $safeClientId = intval(htmlentities($_GET['id']));
+  }
+
 ?>
 
 <div class="container">
@@ -40,7 +48,52 @@
 
 <p>TODO: list of past invoices</p>
 
-<p>WIP: list of activities available for the next invoice</p>
+
+
+
+<h2>Uninvoiced Activities</h2>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>[&nbsp;]</th>
+    <th>Activity</th>
+    <th>Date</th>
+    <th>Hours</th>
+    <th>Rate</th>
+    <th>Total</th>
+  </tr>
+</thead>
+<tbody>
+
+<?php foreach(getUninvoicedActivities($safeClientId) as $activity) { ?>
+
+<tr>
+<td>[&nbsp;]</td>
+<td><?=$activity['category_name'];?><br /><?=$activity['activity_comment'];?></td>
+<td>
+<?php 
+  echo date("m/d/y", $activity['starttime']);
+?> 
+</td>
+<td>
+<?php 
+  
+  echo ($activity['endtime'] - $activity['starttime'])/3600;
+  echo "<br />";
+  echo roundToQuarterHour($activity['starttime'], $activity['endtime']);
+
+?>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<?php } ?>
+
+</tbody>
+</table>
+
 
 <?php include('../../components/footer.php'); ?>
 

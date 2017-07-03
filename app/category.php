@@ -122,9 +122,6 @@
       $request2 = pg_query(getDb(), $stmt2);
       $categories = pg_fetch_all($request2);
 
-
-var_dump($categories);
-
       $data[$client['id']] = $categories;
 
     }
