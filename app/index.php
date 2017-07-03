@@ -30,7 +30,7 @@
 
   <div class="form-group pb-2">
     <label for="clientSelect" class="sr-only">Select a Client</label>
-    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="clientId" onchange="clientChange(this);">
+    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="clientSelect" name="client_id" onchange="clientChange(this);">
       <?php 
         foreach (getClients() as $client) {
           if ($client['count'] > 0) {
@@ -43,7 +43,7 @@
 
   <div class="form-group pb-1">
     <label for="categorySelect" class="sr-only">Select a Category</label>
-    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="categorySelect" name="categoryId">
+    <select class="form-control form-control mb-2 mr-sm-2 mb-sm-0" id="categorySelect" name="category_id">
       <?php 
         foreach (getCategories(42) as $category) {
           print '<option value="' . $category['id'] . '">' . $category['name'] . "</option>\n";
@@ -55,14 +55,14 @@
   <div class="form-group">
     <label for="starttime" class="col-form-label">Start Date and Time</label>
     <div class="col-10">
-      <input class="form-control" type="datetime-local" value="" id="starttime">
+      <input class="form-control" type="datetime-local" value="" id="starttime" name="starttime">
     </div>
   </div>
 
   <div class="form-group">
     <label for="endtime" class="col-form-label">End Date and Time</label>
     <div class="col-10">
-      <input class="form-control" type="datetime-local" value="" id="endtime">
+      <input class="form-control" type="datetime-local" value="" id="endtime" name="endtime">
     </div>
   </div>
 

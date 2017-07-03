@@ -1,0 +1,59 @@
+Todo List
+
+Set today as the default date for starttime and endtime
+
+
+
+
+
+
+
+
+Make the two selects (client and category) depend on each other properly:
+  * When client changes, wipe out category and replace it with the categorie of the new client
+
+Need to be able to save activities
+
+Need a list page for activities:
+  * view
+  * edit
+  * delete
+
+An activity is complete if it has an end time
+
+Invoices:
+  * "Create an invoice" assigns all complete activities to a new invoice for that client
+  * Need to be marked as paid/unpaid
+  * Delete a paid invoice? Probably not.
+  * Delete an unpaid invoice makes all its activities available to invoice again
+
+
+
+
+Done!
+
+Can create a new category, but it always gets assigned to Bob's Garage (id = 12)
+
+Active client id remains Bob's Garage even if I add a category to another client
+
+Can't delete a category
+
+When category saved, change last_update field
+
+Update status message when categories are deleted, updated, and added
+
+Can't save a category
+
+When there are no categories, PHP displays an error after "Edit Categories" is clicked
+
+Add a button for invoice generation (on client page)
+
+Style on the home link on the clients page
+
+Input validation for categories
+
+Disable delete button for client if client has categories
+
+Style the homepage
+
+

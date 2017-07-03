@@ -1,6 +1,8 @@
 <?php
   $ENV = parse_ini_file('env.ini');
 
+  date_default_timezone_set('America/Kentucky/Louisville');
+
   $status_message = array(
     'text' => '',
     'style' => 'alert-info'
