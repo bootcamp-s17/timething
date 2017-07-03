@@ -24,8 +24,6 @@
 
 <div class="container">
 
-<p class="home-link mt-2"><a href="/">Home</a></p>
-
 <h1 class="text-center mt-0 mb-5">Manage Clients</h1>
 
 <?php 
@@ -88,14 +86,7 @@
 
 ?>
   
-<footer>
-  <nav class="text-center d-inline-block navbar fixed-bottom">
-    <a href="/clients/"><h4>Manage Clients</h4></a>
-    <a class="pl-5 pr-5">&copy;2017&nbsp;The&nbsp;Oreons</a>
-    <a class="pl-5 pr-5">About</a>
-    <a class="pl-5 pr-5">Contact</a>
-  </nav>
-</footer>
+<?php include('../components/footer.php'); ?>
 
 </div>
 

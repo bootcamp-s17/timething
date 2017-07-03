@@ -12,7 +12,7 @@ Set today as the default date for starttime and endtime
 Make the two selects (client and category) depend on each other properly:
   * When client changes, wipe out category and replace it with the categorie of the new client
 
-Need to be able to save activities
+Need to be able to update and save activities
 
 Need a list page for activities:
   * view
@@ -56,4 +56,6 @@ Disable delete button for client if client has categories
 
 Style the homepage
 
+Make the two selects (client and category) depend on each other properly:
+  * When client changes, wipe out category and replace it with the categorie of the new client
 
