@@ -1,5 +1,5 @@
 <?php
-  $ENV = parse_ini_file('env.ini');
+  $ENV = parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/../env.ini');
 
   date_default_timezone_set('America/Kentucky/Louisville');
 
@@ -12,26 +12,17 @@
 
   function getDb() {
     global $ENV;
-    $db = pg_connect("host=$ENV[HOST] port=$ENV[PORT] dbname=$ENV[DB_NAME] user=$ENV[USERNAME] password=$ENV[PWD]");
+    $db = pg_connect("host=$ENV[HOST] port=$ENV[PORT] dbname=$ENV[DB] user=$ENV[UN] password=$ENV[PW]");
     return $db;
   }
 
   // https://stackoverflow.com/questions/2480637/round-minute-down-to-nearest-quarter-hour
-  function roundToQuarterHour($start_seconds, $end_seconds) {
 
-    $number_of_seconds = ($end_seconds - $start_seconds);
+      function roundToQuarterHour($start_seconds, $end_seconds) {
+        $number_of_seconds = ($end_seconds - $start_seconds);
+        $rounded_minutes = (ceil(($number_of_seconds / 60) / 15)) * 15;
+        return(sprintf("%.2f", $rounded_minutes / 60));
+      }
 
-    $hours = floor($number_of_seconds/3600);
-    $minutes = floor(($number_of_seconds - ($hours*3600))/60);
-    $seconds = $number_of_seconds - $hours*3600 - $minutes*60;
-
-    $rounded_minutes = $minutes;
-
-    // where $rounded_minutes should be .00, .25, .50, or .75
-
-    return($hours . ":" . $minutes . ":" . $seconds);
-
-
-  }
 
 ?>

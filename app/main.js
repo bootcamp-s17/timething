@@ -4,6 +4,33 @@
 
 let categoryLists = [];
 
+$(document).ready(function(){
+    $('input[type=datetime-local]').val(new Date().toJSON().slice(0,19));
+});
+
+$('#selectAll').click(function(e) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+       $(':checkbox').each(function() {
+        this.checked = false;
+       });
+    }
+});
+
+$('.uncheck').click(function(e){
+  $('#selectAll').prop('checked', false);
+    if ($('.uncheck:checkbox:checked').length === $('.uncheck').length) {
+      $('#selectAll').prop('checked', true);
+      console.log("hey");
+    }
+})
+
+
+
 
 /* clientChange() is called from the onchange event of a select element.
  * param selectObj - the select object which fired the on change event.
@@ -18,22 +45,14 @@ function clientChange(selectObj) {
     },
     complete: (data) => {
 
-console.log(categoryLists);
-
       // get the index of the selected option
       var idx = selectObj.selectedIndex;
-
-console.log(idx);
 
       // get the value of the selected option
       var which = selectObj.options[idx].value;
 
-console.log(which);
-
       // use the selected option value to retrieve the list of items from the clientLists array
       cList = categoryLists[0][which];
-
-console.log(cList);
 
       // get the client select element via its known id
       var cSelect = document.getElementById("categorySelect");
