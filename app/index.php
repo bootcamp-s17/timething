@@ -26,6 +26,18 @@
 
 <h1 class="text-center mt-0 mb-5">Timething</h1>
 
+<?php 
+  if ($status_message['text']) {
+?>
+
+<div class="alert <?php echo $status_message['style']; ?>" role="alert">
+  <strong>Heads up!</strong> <?=$status_message['text'];?>
+</div>
+
+<?php 
+  }
+?>
+
 <form method="get" action="">
 
   <div class="form-group pb-2">

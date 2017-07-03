@@ -24,12 +24,17 @@
 
   function addActivity($client, $cat, $start, $end, $comment) {
 
-    var_dump($client);
-    var_dump($cat);
-    var_dump($start);
-    var_dump($end);
-    var_dump($comment);
+    global $status_message;
+    $stmt = "INSERT INTO activities (starttime, endtime, comment) VALUES ($start, $end, '$comment') RETURNING id";
+    $request = pg_query(getDb(), $stmt);
+    $results = pg_fetch_all($request);
 
+    $activity_id = $results[0]['id'];
+
+    $stmt2 = "INSERT INTO activity_category (activity_id, category_id) VALUES ($activity_id, $cat)";
+    pg_query(getDb(), $stmt2);
+
+    $status_message['text'] = "Activity added!";    
 
   }
 
