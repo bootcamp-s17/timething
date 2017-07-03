@@ -25,12 +25,35 @@
     $minutes = floor(($number_of_seconds - ($hours*3600))/60);
     $seconds = $number_of_seconds - $hours*3600 - $minutes*60;
 
-    $rounded_minutes = $minutes;
+    // $rounded_minutes should be .00, .25, .50, or .75
+    $rounded_minutes = 15 * ceil($minutes/15);
 
-    // where $rounded_minutes should be .00, .25, .50, or .75
+    $quarter = 0;
 
-    return($hours . ":" . $minutes . ":" . $seconds);
+    switch ($rounded_minutes) {
 
+      case '15':
+        $quarter = 25;
+        break;
+
+      case '30':
+        $quarter = 50;
+        break;
+
+      case '45':
+        $quarter = 75;
+        break;
+
+      case '60':
+        $quarter = 0;
+        $hours++;
+        break;
+
+    }
+
+    $quarter = sprintf('%02d', $quarter);
+
+    return($hours . "." . $quarter);
 
   }
 

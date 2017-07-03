@@ -84,4 +84,11 @@ ORDER BY name asc';
     $status_message['text'] = "Client added!";
   }
 
+  function getClientName($id) {
+    $stmt = "SELECT name FROM clients WHERE id=$id";
+    $request = pg_query(getDb(), $stmt);
+    $results = pg_fetch_all($request);
+    return $results[0]['name'];
+  }
+
 ?>

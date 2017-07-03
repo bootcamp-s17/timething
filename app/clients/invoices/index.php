@@ -28,11 +28,14 @@
     $safeClientId = intval(htmlentities($_GET['id']));
   }
 
+  $clientName = getClientName($safeClientId);
+
 ?>
 
 <div class="container">
 
-<h1 class="text-center mt-0 mb-5">Manage Invoices (for Client X [TODO!])</h1>
+<h1 class="text-center mt-0">Manage Invoices</h1>
+<h2 class="text-center mt-0 mb-5"><?=$clientName;?></h2>
 
 <?php 
   if ($status_message['text']) {
@@ -51,7 +54,9 @@
 
 
 
-<h2>Uninvoiced Activities</h2>
+<h4>Uninvoiced Activities</h4>
+
+<br />
 
 <table class="table">
 <thead>
@@ -72,21 +77,25 @@
 <td>[&nbsp;]</td>
 <td><?=$activity['category_name'];?><br /><?=$activity['activity_comment'];?></td>
 <td>
-<?php 
-  echo date("m/d/y", $activity['starttime']);
-?> 
+<?=date("m/d/y", $activity['starttime']);?> 
 </td>
-<td>
-<?php 
-  
-  echo ($activity['endtime'] - $activity['starttime'])/3600;
-  echo "<br />";
-  echo roundToQuarterHour($activity['starttime'], $activity['endtime']);
+<td><?php
+
+  $activity['rounded_time'] = roundToQuarterHour($activity['starttime'], $activity['endtime']);
+
+  echo $activity['rounded_time'];
+
+?></td>
+<td>$<?=$activity['rate'];?>/hr</td>
+<td class="pull-right">$<?php
+
+  $total = $activity['rounded_time'] * $activity['rate'];
+
+  echo sprintf('%.02f', $total);
 
 ?>
+
 </td>
-<td></td>
-<td></td>
 </tr>
 
 <?php } ?>
